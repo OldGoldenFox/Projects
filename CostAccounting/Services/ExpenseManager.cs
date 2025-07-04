@@ -79,10 +79,6 @@ namespace CostAccounting.Services
             var sum = filteredExpenses.Sum(expense => expense.Amount);
             Console.WriteLine($"За {date:Y} общая сумма расходов: {sum}тг");
         }
-        public void SaveAndExit()
-        {
-            throw new NotImplementedException();
-        }
         public void SaveToJson(string fileName)
         {
             //Для оформления с отступами и нормальными символами (русскими в нашем случае вместо юникода)

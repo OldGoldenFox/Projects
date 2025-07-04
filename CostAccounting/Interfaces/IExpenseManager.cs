@@ -13,7 +13,6 @@ namespace CostAccounting.Interfaces
         void CalculateTheAmountOfExpenses();
         void CalculateTheAmountOfExpenses(ExpenseCategory category);
         void CalculateTheAmountOfExpenses(DateTime date);
-        void SaveAndExit();
         void SaveToJson(string fileName);
         void LoadToJson(string fileName);
     }

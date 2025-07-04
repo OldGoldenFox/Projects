@@ -21,7 +21,14 @@ namespace CostAccounting
 
             if (File.Exists(path))
             {
-                expenses.LoadToJson(path);
+                try
+                {
+                    expenses.LoadToJson(path);
+                }
+                catch 
+                {
+                    Console.WriteLine("Файл поврежден");
+                }
             }
 
             while (true)

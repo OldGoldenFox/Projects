@@ -1,6 +1,4 @@
-﻿using CostAccounting.Models;
-
-namespace CostAccounting.Interfaces
+﻿namespace CostAccounting.Interfaces
 {
     internal interface IStorage
     {
