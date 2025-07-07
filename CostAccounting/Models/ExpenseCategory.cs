@@ -1,6 +1,6 @@
 ﻿namespace CostAccounting.Models
 {
-    internal enum ExpenseCategory
+    public enum ExpenseCategory
     {
         Продукты = 1,
         Транспорт,
