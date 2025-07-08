@@ -1,21 +1,16 @@
 ﻿using System.Text.Json;
+using ToDo.Models;
 
-namespace TODO
-
+namespace ToDo.Services
 {
-    public class ToDoList
+    internal class ToDoList
     {
-        private List<Task> tasks = new();
+        private List<TodoTask> tasks = new();
         public int Count => tasks.Count;
 
-        public void AddTask(string description)
+        public void AddTask(string description, bool status = false)
         {
-            tasks.Add(new Task { Description = description, Status = false });
-        }
-
-        public void AddTask(string description, bool status)
-        {
-            tasks.Add(new Task { Description = description, Status = status });
+            tasks.Add(new TodoTask { Status = status, Description = description});
         }
 
         public void EditTask(string newText, int taskIndex)
@@ -66,6 +61,7 @@ namespace TODO
                     var parts = line.Split("|");
                     bool status = parts[0] == "1";
                     string description = parts[1];
+                    DateTime deadLine = DateTime.Parse(parts[2]);
                     AddTask(description, status);
                 }
             }
@@ -75,10 +71,10 @@ namespace TODO
         public void SaveToJsonFile(string fileName)
         {
             //Сохранение без отступов (компактное)
-            string json = JsonSerializer.Serialize(tasks);
+            //string json = JsonSerializer.Serialize(tasks);
 
             //Сохранение с отступами (красивое)
-            //string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
+            string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
 
             File.WriteAllText(fileName, json);
         }
@@ -87,7 +83,7 @@ namespace TODO
         public void ReadToJsonFile(string fileName)
         {
             string json = File.ReadAllText(fileName);
-            tasks = JsonSerializer.Deserialize<List<Task>>(json) ?? new(); //new на случай если результатом будет null
+            tasks = JsonSerializer.Deserialize<List<TodoTask>>(json) ?? new(); //new на случай если результатом будет null
         }
 
     }
