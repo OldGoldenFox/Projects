@@ -1,8 +1,8 @@
 ﻿using CostAccounting.Models;
 
-namespace CostAccounting
+namespace CostAccounting.Helpers
 {
-    public static class InputHelper
+    internal static class InputHelper
     {
         public static int ReadInt(string message)
         {
@@ -49,7 +49,6 @@ namespace CostAccounting
         
         public static DateTime ChooseYearAndMonth()
         {
-
             var year = Choose($"Введите год (2001-{DateTime.Now.Year}): ", countEnd: DateTime.Now.Year, countStart: 2000);
             var month = Choose("Выберите месяц (1-12): ", 12);
             return new DateTime(year, month, 1);
