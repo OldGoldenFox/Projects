@@ -89,7 +89,10 @@ namespace CostAccounting.Services
             };
 
             string json = JsonSerializer.Serialize(expenses, options);
-            //string json = JsonSerializer.Serialize(contacts); Самое обычное и практичное сохранение
+
+            //Самое обычное и практичное сохранение
+            //string json = JsonSerializer.Serialize(contacts);
+
             File.WriteAllText(fileName, json);
         }
         public void LoadToJson(string fileName)
